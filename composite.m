@@ -1,4 +1,4 @@
-function [Csig,Cbak,Covl]= composite(cleanFile, enhancedFile);
+function [Csig,Cbak,Covl,segSNR]= composite(cleanFile, enhancedFile);
 
 % --------- composite objective measure ----------------------
 %
@@ -41,8 +41,10 @@ alpha= 0.95;
 
 [data1, Srate1]= audioread(cleanFile);
 [data2, Srate2]= audioread(enhancedFile);
-Nbits1 = audioinfo(cleanFile).BitsPerSample;
-Nbits2 = audioinfo(enhancedFile).BitsPerSample;
+info1 = audioinfo(cleanFile);
+info2 = audioinfo(enhancedFile);
+Nbits1 = info1.BitsPerSample;
+Nbits2 = info2.BitsPerSample;
 if ( Srate1~= Srate2) | ( Nbits1~= Nbits2)
     error( 'The two files do not match!\n');
 end
@@ -73,7 +75,8 @@ segSNR= mean( segsnr_dist);
 
 
 % -- compute the pesq ----
- [pesq_mos]= pesq(Srate1,cleanFile, enhancedFile);
+%[pesq_mos]= pesq(Srate1,cleanFile, enhancedFile);
+pesq_mos = 0;
  
  
 % --- now compute the composite measures ------------------
@@ -82,7 +85,7 @@ Csig = 3.093 - 1.029*llr_mean + 0.603*pesq_mos-0.009*wss_dist;
 Cbak = 1.634 + 0.478 *pesq_mos - 0.007*wss_dist + 0.063*segSNR;
 Covl = 1.594 + 0.805*pesq_mos - 0.512*llr_mean - 0.007*wss_dist;
 
-fprintf('\n LLR=%f   SNRseg=%f   WSS=%f   PESQ=%f\n',llr_mean,segSNR,wss_dist,pesq_mos);
+%fprintf('\n LLR=%f   SNRseg=%f   WSS=%f   PESQ=%f\n',llr_mean,segSNR,wss_dist,pesq_mos);
 
 return;
 
