@@ -17,7 +17,7 @@ function [Csig,Cbak,Covl]= composite(cleanFile, enhancedFile);
 %     and weighted spectral slope (WSS) objective measures. 
 %
 %     References:
-%     [1] Hu, Y. and Loizou, P. (2006). “Evaluation of objective measures for speech enhancement, 
+%     [1] Hu, Y. and Loizou, P. (2006). ï¿½Evaluation of objective measures for speech enhancement, 
 %         Proceedings of INTERSPEECH-2006, Philadelphia, PA, September 2006.
 %
 %
@@ -39,8 +39,10 @@ end
 
 alpha= 0.95;
 
-[data1, Srate1, Nbits1]= wavread(cleanFile);
-[data2, Srate2, Nbits2]= wavread(enhancedFile);
+[data1, Srate1]= audioread(cleanFile);
+[data2, Srate2]= audioread(enhancedFile);
+Nbits1 = audioinfo(cleanFile).BitsPerSample;
+Nbits2 = audioinfo(enhancedFile).BitsPerSample;
 if ( Srate1~= Srate2) | ( Nbits1~= Nbits2)
     error( 'The two files do not match!\n');
 end
