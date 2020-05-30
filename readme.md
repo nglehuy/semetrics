@@ -2,8 +2,6 @@
 
 This implementation of Matlab was originally taken from [https://ecs.utdallas.edu/loizou/speech/software.htm](https://ecs.utdallas.edu/loizou/speech/software.htm)
 
-This code uses ```oct2py``` to use some function from matlab in python.
-
 ## REQUIREMENTS
 
 MATLAB must be installed
@@ -11,6 +9,12 @@ MATLAB must be installed
 ```bash
 cd "matlabroot/extern/engines/python"
 python setup.py install
+```
+
+PIP Package
+
+```bash
+pip install Cython pesq
 ```
 
 ## PESQ MEASURE
