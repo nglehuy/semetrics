@@ -2,9 +2,7 @@ from __future__ import absolute_import
 
 from pesq import pesq
 from scipy.io import wavfile
-import matlab.engine
-
-eng = matlab.engine.start_matlab()
+from oct2py import octave
 
 
 def pesq_mos(clean: str, enhanced: str):
@@ -16,7 +14,7 @@ def pesq_mos(clean: str, enhanced: str):
 
 
 def composite(clean: str, enhanced: str):
-    csig, cbak, covl, ssnr = eng.composite(clean, enhanced, nargout=4)
+    csig, cbak, covl, ssnr = octave.feval("composite", clean, enhanced, nout=4)
     pesq_score = pesq_mos(clean, enhanced)
     csig += 0.603 * pesq_score
     cbak += 0.478 * pesq_score
