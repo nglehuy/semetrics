@@ -18,7 +18,7 @@ apt install octave
 PIP Package
 
 ```bash
-pip install Cython pesq oct2py
+pip install -r requirements.txt
 ```
 
 ## COMPOSITE MEASURE
