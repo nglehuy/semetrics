@@ -4,15 +4,11 @@ This implementation of Matlab was originally taken from [https://ecs.utdallas.ed
 
 ## REQUIREMENTS
 
-MATLAB or Octave must be installed
+Octave must be installed
 
 ```bash
-# MATLAB
-cd "matlabroot/extern/engines/python"
-python setup.py install
-# OCTAVE
 apt install octave
-pip install oct2py Cython
+pip install oct2py Cython # install Cython before installing pesq
 pip install pesq
 ```
 
