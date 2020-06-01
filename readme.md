@@ -11,14 +11,9 @@ MATLAB or Octave must be installed
 cd "matlabroot/extern/engines/python"
 python setup.py install
 # OCTAVE
-pip install oct2py
 apt install octave
-```
-
-PIP Package
-
-```bash
-pip install -r requirements.txt
+pip install oct2py Cython
+pip install pesq
 ```
 
 ## COMPOSITE MEASURE

@@ -28,6 +28,6 @@ def composite(clean: str, enhanced: str):
 
 
 if __name__ == "__main__":
-    clean = "./sp09.wav"
-    enhanced = "./enhanced_logmmse.wav"
+    clean = "./audio/sp09.wav"
+    enhanced = "./audio/enhanced_logmmse.wav"
     print(composite(clean, enhanced))
