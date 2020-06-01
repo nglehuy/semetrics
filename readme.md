@@ -37,7 +37,7 @@ b = 2.6160
 
 o = 2.7133
 
-s - 3.9917
+s = 3.9917
 ```
 
 where ```sp09.wav``` is the clean file and ```enhanced_logmmse.wav``` is the enhanced file.
