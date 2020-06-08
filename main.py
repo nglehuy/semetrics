@@ -19,12 +19,12 @@ def pesq_mos(clean: str, enhanced: str):
 
 
 def composite(clean: str, enhanced: str):
-    csig, cbak, covl, ssnr = oc.feval(os.path.join(os.path.dirname(__file__), "composite.m"), clean, enhanced, nout=4)
     pesq_score = pesq_mos(clean, enhanced)
+    csig, cbak, covl, ssnr = oc.feval(os.path.join(os.path.dirname(__file__), "composite.m"), clean, enhanced, nout=4)
     csig += 0.603 * pesq_score
     cbak += 0.478 * pesq_score
     covl += 0.805 * pesq_score
-    return csig, cbak, covl, ssnr
+    return pesq_score, csig, cbak, covl, ssnr
 
 
 if __name__ == "__main__":
