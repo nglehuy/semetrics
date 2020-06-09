@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import os
 import logging
 import oct2py
@@ -25,9 +23,3 @@ def composite(clean: str, enhanced: str):
     cbak += 0.478 * pesq_score
     covl += 0.805 * pesq_score
     return pesq_score, csig, cbak, covl, ssnr
-
-
-if __name__ == "__main__":
-    clean = "./audio/sp09.wav"
-    enhanced = "./audio/enhanced_logmmse.wav"
-    print(composite(clean, enhanced))
